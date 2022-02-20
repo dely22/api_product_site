@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Products</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header__logo"> API products</div>
+        <%- include('./partials/search.ejs') %>
+    </header>
+
+    <div class="wrapper">
+        <div class="produc">
+            <% if(products != null) { %>
+            <% products.forEach(function(products, index) { %>
+                <a href="/products/<%- products.id %>" class="produc__card">
+                    <img src="<%- products.thumbnail %>" alt="<%- products.title.rendered %>">
+                    <h2><%- products.title.rendered %></h2>
+                    <p><%- products.description.rendered %></p>
+                </a>
+            <% }) %>
+            <% } else { %>
+                No products found.
+            <% } %>
+        </div>
+    </div>  
+</body>
+</html> 
