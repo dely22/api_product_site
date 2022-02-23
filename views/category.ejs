@@ -1,0 +1,24 @@
+<!-- category section starts  -->
+    <section class="category">
+
+        <h1 class="heading"> shop by <span>category</span> </h1>
+
+    <div class="box-container">
+            
+                <% if (categories != null) { %>
+                    <% for(let category of categories){ %>
+                        <div class="box">
+                        <!-- Single Item -->
+                        <!-- <img src="img/cat_img1.png" alt=""> -->
+                        <h3 data-filter=".<%= category %>"> 
+                            <%= category %>
+                        </h3>
+                        </div>
+                    <% } %>
+                <% } %>
+
+           
+        
+
+    </section>
+<!-- category section ends -->

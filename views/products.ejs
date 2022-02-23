@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- head -->
+    <%- include('head.ejs') %>
+    <title>home</title>
+</head>
+<body>
+    
+<%- include('header.ejs') %>
+
+<!-- home section starts  -->
+<%- include('home1.ejs') %>
+
+
+<!-- category section starts  -->
+    <section class="category">
+        <h1 class="heading"> shop by <span>category</span> </h1>
+        <div class="box-container">
+                        <button class="box" data-filter="*">
+                            <h3>ALL</h3>
+                        </button>
+                        <% if (categories != null) { %>
+                            <% for(let category of categories){ %>
+                            <button class="box">
+                            <!-- Single Item -->
+                            <!-- <img src="img/cat_img1.png" alt=""> -->
+                            <h3 data-filter=".<%= category %>"> 
+                                <%= category %>
+                            </h3>
+                            </button>
+                        <% } %>
+                    <% } %>
+
+
+        </div>
+    </section>
+<!-- category section ends -->
+
+<!-- main -->
+<!-- ALL Products section starts  -->
+<section class="arrivals">
+    <h1 class="heading"> new <span>arrivals</span> </h1>
+    <div class="box-container">
+    <!-- for loo p for 6 products -->
+     <% for( let i = 0; i < products.length; i++ ) { %>
+        <!-- Single gallery Item Start -->
+
+      <div class="box <%= products[i].category %>">
+        <a href="/<%= products[i].id %>" onclick="pass('<%= products[i].id %>')">
+            <div class="img">
+                <img src="<%= products[i].thumbnail %>"  class="main-img" alt="">
+                <!-- <img src="img/arrival-6-hover.jpg" class="hover-img" alt=""> -->
+            </div>
+            <div class="content">
+                <h3>$<%= products[i].title %></h3>
+                <div class="price">$<%= products[i].price %>
+                    <span>
+                        <% if (products[i].stock > 0) { %>
+                            In Stock
+                            <%} else { %>
+                            Finished
+                        <% } %>
+                    </span> 
+                </div>
+                <div class="stars">
+                     <% for (var s = 0; s < 5; s++) { %>
+                         <i class="fas fa-star<%= (s < products[i].rating - 0.5)? '' : '-o'%>" aria-hidden="true">
+                        </i>
+                         <% }%>  
+                </div>
+               
+            </div>
+            </a>
+        </div>
+     <% } %>
+
+
+    </div>
+
+</section>
+<!-- arrivals section ends -->
+
+
+<!-- footer -->
+<%- include('footer.ejs') %>
+
+<!-- home section ends -->
+
+<!-- swiper js link      -->
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="/js/script.js"></script>
+
+</body>
+</html>
